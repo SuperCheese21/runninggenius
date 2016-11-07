@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+		<!-- Viewport for mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+        
+		<!-- Algorithms
+		https://dl.dropboxusercontent.com/u/267890860/
+		-->
+		<script src="algorithms.js"></script>
+		
+		<!-- Stylesheet-->
+		<link rel="stylesheet" type="text/css" href="running-genius.css">
+    </head>
+    
+    <body>
+        
+        <h3>
+			<i>Running Calculator v1.2</i>
+		</h3>
+		
+		<table class = "table table-bordered" id = "main">
+		
+			<hr>
+		
+			<tr>
+				<td class = "success" width = "50%">
+					<h4>Race Time Calculator</h4>
+				</td>
+				<td class = "info">
+					<h4>Split Calculator</h4>
+				</td>
+			</tr>
+			
+			<tr>
+				
+				
+				<!-- RACE TIME CALCULATOR -->
+				<td>
+        
+					<form action="javascript:getRaceConversion(input[0])">
+					
+						<h4>Race Time:</h4>
+						
+						<div class="form-group">
+							<label for="time1">Time:</label>
+							<div class = "input-group">
+								<input type="number" class="form-control" placeholder="Min." style="width:70px" onchange="javascript:input[0][0][0]=this.value;">
+								<input type="number" class="form-control" step="0.01" placeholder="Sec." style="width:80px" onchange="javascript:input[0][0][1]=this.value;">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="gender1">Gender:</label>
+							<label class="radio-inline">
+								<input type="radio" name="gender1Select" id="inlineRadio1" value="0" onchange="javascript:input[0][3]=this.value;"> Male
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="gender1Select" id="inlineRadio2" value="1" onchange="javascript:input[0][3]=this.value;"> Female
+							</label>
+						</div>
+						
+						<div class="form-group">
+							<label for="dist1">Distance:</label>
+							<div class = "input-group">
+								<span class = "input-group-addon">Select:</span>
+								<select class="form-control" style="width:100px" onchange="javascript:input[0][1]=this.value;">
+									<option value=0>100m</option>
+									<option value=1>200m</option>
+									<option value=2>400m</option>
+									<option value=3>800m</option>
+									<option value=4>1500m</option>
+									<option value=5>1600m</option>
+									<option value=6>3000m</option>
+									<option value=7>3200m</option>
+									<option value=8>5000m</option>
+									<option value=9>8000m</option>
+									<option value=10>10000m</option>
+								</select>
+							</div>
+						</div>
+						
+						<hr>
+						
+						<h4>Convert To:</h4>
+						
+						<div class="form-group">
+							<label for="gender2">Gender:</label>
+							<label class="radio-inline">
+								<input type="radio" name="gender2Select" id="inlineRadio1" value="0" onchange="javascript:input[0][4]=this.value;"> Male
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="gender2Select" id="inlineRadio2" value="1" onchange="javascript:input[0][4]=this.value;"> Female
+							</label>
+						</div>
+						
+						<div class="form-group">
+							<label for="dist2">Distance:</label>
+							<div class = "input-group">
+								<span class = "input-group-addon">Select:</span>
+								<select class="form-control" style="width:100px" onchange="javascript:input[0][2]=this.value;">
+									<option value=0>100m</option>
+									<option value=1>200m</option>
+									<option value=2>400m</option>
+									<option value=3>800m</option>
+									<option value=4>1500m</option>
+									<option value=5>1600m</option>
+									<option value=6>3000m</option>
+									<option value=7>3200m</option>
+									<option value=8>5000m</option>
+									<option value=9>8000m</option>
+									<option value=10>10000m</option>
+								</select>
+							</div>
+						</div>
+						
+						<hr>
+						
+						<button type="submit" id="submit" class="btn btn-success">Convert! 
+							<i class="glyphicon glyphicon-arrow-right"></i>
+						</button>
+						
+					</form>
+					
+					<table>
+						<tr>
+							<td><label>Output:</label></td>
+							<td><input type="text" class="form-control input-output" id="min1" placeholder="Min." readonly></td>
+							<td><input type="text" class="form-control input-output" id="sec1" placeholder="Sec." readonly></td>
+						</tr>
+					</table>
+					
+				</td>
+				
+				<!-- SPLIT TIME CALCULATOR-->
+				<td>
+				
+					<form action="javascript:getSplitConversion(input[1])">
+					
+						<h4>Split Time:</h4>
+						
+						<div class="form-group">
+							<label for="time1">Time:</label>
+							<div class = "input-group">
+								<input type="number" class="form-control" placeholder="Min." style="width:70px" onchange="javascript:input[1][0][0]=this.value;">
+								<input type="number" class="form-control" step="0.01" placeholder="Sec." style="width:80px" onchange="javascript:input[1][0][1]=this.value;">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="dist1">Distance:</label>
+							<table>
+								<tr>
+									<td>
+										<div class = "input-group">
+											<span class = "input-group-addon">Select:</span>
+											<select class="form-control" style="width:100px" onchange="javascript:input[1][1]=this.value; javascript:input[1][3]=0;">
+												<option value=100>100m</option>
+												<option value=200>200m</option>
+												<option value=400>400m</option>
+												<option value=800>800m</option>
+												<option value=1500>1500m</option>
+												<option value=1600>1600m</option>
+												<option value=3000>3000m</option>
+												<option value=3200>3200m</option>
+												<option value=5000>5000m</option>
+												<option value=8000>8000m</option>
+												<option value=10000>10000m</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<div class = "input-group">
+											<span class = "input-group-addon">or enter here:</span>
+											<input type="number" class="form-control" style="width:80px" onchange="javascript:input[1][1]=this.value;">
+											<select class="form-control" style="width:70px" onchange="javascript:input[1][3]=this.value;">
+												<option value=0>m</option>
+												<option value=1>km</option>
+												<option value=2>ft</option>
+												<option value=3>mi</option>
+											</select>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						
+						<hr>
+						
+						<h4>Convert To:</h4>
+						
+						<div class="form-group">
+							<label for="dist2">Distance:</label>
+							<table>
+								<tr>
+									<td>
+										<div class = "input-group">
+											<span class = "input-group-addon">Select:</span>
+											<select class="form-control" style="width:100px" onchange="javascript:input[1][2]=this.value; javascript:input[1][4]=0;">
+												<option value=100>100m</option>
+												<option value=200>200m</option>
+												<option value=400>400m</option>
+												<option value=800>800m</option>
+												<option value=1500>1500m</option>
+												<option value=1600>1600m</option>
+												<option value=3000>3000m</option>
+												<option value=3200>3200m</option>
+												<option value=5000>5000m</option>
+												<option value=8000>8000m</option>
+												<option value=10000>10000m</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<div class = "input-group">
+											<span class = "input-group-addon">or enter here:</span>
+											<input type="number" class="form-control" style="width:80px" onchange="javascript:input[1][2]=this.value;">
+											<select class="form-control" style="width:70px" onchange="javascript:input[1][4]=this.value;">
+												<option value=0>m</option>
+												<option value=1>km</option>
+												<option value=2>ft</option>
+												<option value=3>mi</option>
+											</select>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						
+						<hr>
+					
+						<button type="submit" id="submit" class="btn btn-primary">Convert! 
+							<i class="glyphicon glyphicon-arrow-right"></i>
+						</button>
+					
+					</form>
+					
+					<table>
+						<tr>
+							<td><label>Output:</label></td>
+							<td><input type="text" class="form-control input-output" id="min2" placeholder="Min." readonly></td>
+							<td><input type="text" class="form-control input-output" id="sec2" placeholder="Sec." readonly></td>
+						</tr>
+					</table>
+				
+				</td>
+				
+			</tr>
+		
+		</table>
+		
+		<p>Copyright (c) 2015-2016 Ethan Shields.  All Rights Reserved.</p>
+        
+    </body>
+    
+</html>
