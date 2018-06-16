@@ -1,0 +1,15 @@
+body {
+	padding: 20px;
+}
+
+td {
+	padding: 3px;
+}
+
+input {
+	border-radius: 5px;
+}
+
+.input-output {
+	width: 70px;
+}
